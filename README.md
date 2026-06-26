@@ -1,72 +1,97 @@
 # Folder Structure Generator
 
-Generate a clean project tree and keep your `README.md` in sync with the current folder structure.
+`Folder Structure Generator` is a VS Code extension that scans the current workspace, generates a clean tree view, and inserts that structure into `README.md`.
 
-## Status
+GitHub: https://github.com/TigerDev-Studio
 
-This repository is currently in the planning and documentation stage. The implementation has not been added yet.
+Visual Studio Marketplace Publisher: https://marketplace.visualstudio.com/manage/publishers/tigerdev1991
 
-## Goal
+## Features
 
-The project is intended to:
+- generate a folder tree from the current workspace
+- update or create a `## Project Structure` section in `README.md`
+- copy the generated structure to the clipboard
+- configure maximum depth, file inclusion, section title, and excluded paths
 
-- scan a project directory
-- generate a readable folder tree
-- insert or update that tree inside `README.md`
-- support reusable templates for common project layouts
+## Commands
 
-## Planned Features
+Open the Command Palette and run:
 
-- automatic project tree generation
-- `README.md` section updates
-- customizable folder and file templates
-- nested directory support
-- ignore rules for generated or irrelevant paths
-- CLI usage for local projects
+- `Folder Structure Generator: Update README Structure`
+- `Folder Structure Generator: Copy Folder Structure`
 
 ## Example Output
 
 ```text
 my-project/
 ├── src/
-├── assets/
-├── tests/
-└── README.md
+│   ├── commands/
+│   └── utils/
+├── README.md
+└── package.json
 ```
 
-## Planned Workflow
+## How It Works
 
-1. Read the target project structure.
-2. Convert it into a tree format.
-3. Find a dedicated section in `README.md`.
-4. Replace that section with the latest generated structure.
+When you run `Update README Structure`, the extension:
 
-## Suggested README Section
+1. reads the current workspace root
+2. builds a tree representation of folders and files
+3. finds the configured README section
+4. replaces that section, or appends it if it does not exist
 
-````markdown
+## Extension Settings
+
+This extension contributes the following settings:
+
+- `folderStructureGenerator.sectionTitle`: heading to update inside `README.md`
+- `folderStructureGenerator.maxDepth`: maximum directory depth to include
+- `folderStructureGenerator.includeFiles`: include files in addition to folders
+- `folderStructureGenerator.exclude`: names to exclude from generation
+
+Default exclusions:
+
+```json
+[
+  ".git",
+  "node_modules",
+  ".DS_Store",
+  ".vscode-test",
+  "dist",
+  "out"
+]
+```
+
+## Development
+
+```bash
+npm install
+```
+
+Then open this repository in VS Code and press `F5` to launch the extension development host.
+
+To package the extension:
+
+```bash
+npm run package
+```
+
+## Publishing Metadata
+
+- Publisher: `tigerdev1991`
+- GitHub repository: `https://github.com/TigerDev-Studio/Folder-Structure-Generator`
+- Marketplace publisher page: `https://marketplace.visualstudio.com/manage/publishers/tigerdev1991`
+
 ## Project Structure
 
 ```text
-my-project/
-├── src/
-├── assets/
-├── tests/
-└── README.md
+Folder-Structure-Generator/
+├── CHANGELOG.md
+├── extension.js
+├── package.json
+├── README.md
+└── .vscodeignore
 ```
-````
-
-## Roadmap
-
-- [ ] Add initial Node.js implementation
-- [ ] Add CLI entry point
-- [ ] Support nested folders
-- [ ] Support ignore patterns
-- [ ] Support template presets
-- [ ] Add tests
-
-## Contributing
-
-Issues and pull requests are welcome. If you want to help shape the first implementation, open an issue with the workflow or CLI behavior you want supported.
 
 ## License
 
