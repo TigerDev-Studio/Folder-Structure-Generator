@@ -1,24 +1,43 @@
 # Folder Structure Generator
 
-`Folder Structure Generator` is a VS Code extension that scans the current workspace, generates a clean tree view, and inserts that structure into `README.md`.
+`Folder Structure Generator` is a VS Code extension that creates a readable folder tree for your workspace and adds it to your `README.md`.
 
-GitHub: https://github.com/TigerDev-Studio
+## What It Does
 
-Visual Studio Marketplace Publisher: https://marketplace.visualstudio.com/manage/publishers/tigerdev1991
+- generates a clean project structure tree
+- updates or creates a `Project Structure` section in `README.md`
+- copies the generated tree to the clipboard
+- lets you control depth, files, section title, and excluded paths
 
-## Features
+## Install
 
-- generate a folder tree from the current workspace
-- update or create a `## Project Structure` section in `README.md`
-- copy the generated structure to the clipboard
-- configure maximum depth, file inclusion, section title, and excluded paths
+Install from the Visual Studio Marketplace publisher page:
+
+https://marketplace.visualstudio.com/manage/publishers/tigerdev1991
+
+You can also install the packaged `.vsix` file directly in VS Code:
+
+1. Open Extensions in VS Code.
+2. Select the `...` menu in the top-right corner.
+3. Choose `Install from VSIX...`
+4. Select `folder-structure-generator-0.1.0.vsix`
+
+## How To Use
+
+1. Open your project folder in VS Code.
+2. Open the Command Palette:
+   macOS: `Shift` + `Cmd` + `P`
+   Windows/Linux: `Shift` + `Ctrl` + `P`
+3. Run one of these commands:
+   `Folder Structure Generator: Update README Structure`
+   `Folder Structure Generator: Copy Folder Structure`
 
 ## Commands
 
-Open the Command Palette and run:
-
 - `Folder Structure Generator: Update README Structure`
+  Generates the workspace tree and inserts it into `README.md`.
 - `Folder Structure Generator: Copy Folder Structure`
+  Generates the workspace tree and copies it to your clipboard.
 
 ## Example Output
 
@@ -31,25 +50,37 @@ my-project/
 └── package.json
 ```
 
-## How It Works
+## README Output
 
-When you run `Update README Structure`, the extension:
+When you run `Update README Structure`, the extension adds or updates a section like this:
 
-1. reads the current workspace root
-2. builds a tree representation of folders and files
-3. finds the configured README section
-4. replaces that section, or appends it if it does not exist
+````markdown
+## Project Structure
 
-## Extension Settings
+```text
+my-project/
+├── src/
+│   ├── commands/
+│   └── utils/
+├── README.md
+└── package.json
+```
+````
 
-This extension contributes the following settings:
+## Settings
 
-- `folderStructureGenerator.sectionTitle`: heading to update inside `README.md`
-- `folderStructureGenerator.maxDepth`: maximum directory depth to include
-- `folderStructureGenerator.includeFiles`: include files in addition to folders
-- `folderStructureGenerator.exclude`: names to exclude from generation
+You can configure these settings in VS Code:
 
-Default exclusions:
+- `folderStructureGenerator.sectionTitle`
+  The heading used in `README.md`. Default: `Project Structure`
+- `folderStructureGenerator.maxDepth`
+  Maximum folder depth to include. Default: `3`
+- `folderStructureGenerator.includeFiles`
+  Include files in the generated output. Default: `true`
+- `folderStructureGenerator.exclude`
+  Files and folders to ignore
+
+Default excluded names:
 
 ```json
 [
@@ -62,36 +93,16 @@ Default exclusions:
 ]
 ```
 
-## Development
+## Requirements
 
-```bash
-npm install
-```
+- VS Code `1.85.0` or later
+- A workspace folder with a `README.md` file if you want to update documentation automatically
 
-Then open this repository in VS Code and press `F5` to launch the extension development host.
+## Support
 
-To package the extension:
-
-```bash
-npm run package
-```
-
-## Publishing Metadata
-
-- Publisher: `tigerdev1991`
-- GitHub repository: `https://github.com/TigerDev-Studio/Folder-Structure-Generator`
-- Marketplace publisher page: `https://marketplace.visualstudio.com/manage/publishers/tigerdev1991`
-
-## Project Structure
-
-```text
-Folder-Structure-Generator/
-├── CHANGELOG.md
-├── extension.js
-├── package.json
-├── README.md
-└── .vscodeignore
-```
+- GitHub: https://github.com/TigerDev-Studio
+- Repository: https://github.com/TigerDev-Studio/Folder-Structure-Generator
+- Issues: https://github.com/TigerDev-Studio/Folder-Structure-Generator/issues
 
 ## License
 
