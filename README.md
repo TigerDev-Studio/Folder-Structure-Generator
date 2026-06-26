@@ -1,6 +1,6 @@
-# Folder Structure Generator
+# Folder Structure Generators
 
-`Folder Structure Generator` is a VS Code extension that creates a readable folder tree for your workspace and adds it to your `README.md`.
+`Folder Structure Generators` is a VS Code extension that creates a readable folder tree for your workspace and adds it to your `README.md`.
 
 ## What It Does
 
@@ -11,16 +11,16 @@
 
 ## Install
 
-Install from the Visual Studio Marketplace publisher page:
+Install from the Visual Studio Marketplace:
 
-https://marketplace.visualstudio.com/manage/publishers/tigerdev1991
+https://marketplace.visualstudio.com/items?itemName=TigerDev1991.folder-structure-generator-tigerdev1991
 
 You can also install the packaged `.vsix` file directly in VS Code:
 
 1. Open Extensions in VS Code.
 2. Select the `...` menu in the top-right corner.
 3. Choose `Install from VSIX...`
-4. Select `folder-structure-generator-0.1.0.vsix`
+4. Select `folder-structure-generator-tigerdev1991-0.1.0.vsix`
 
 ## How To Use
 
