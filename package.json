@@ -2,7 +2,7 @@
   "name": "folder-structure-generator-tigerdev1991",
   "displayName": "Folder Structure Generators",
   "description": "Generate a project folder tree and insert it into README.md from VS Code.",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "publisher": "TigerDev1991",
   "license": "MIT",
   "author": {
@@ -30,6 +30,7 @@
     "tree",
     "documentation"
   ],
+  "icon": "assets/icon.png",
   "main": "./extension.js",
   "activationEvents": [
     "onCommand:folderStructureGenerator.updateReadmeStructure",
