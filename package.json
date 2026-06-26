@@ -1,0 +1,92 @@
+{
+  "name": "folder-structure-generator",
+  "displayName": "Folder Structure Generator",
+  "description": "Generate a project folder tree and insert it into README.md from VS Code.",
+  "version": "0.1.0",
+  "publisher": "tigerdev1991",
+  "license": "MIT",
+  "author": {
+    "name": "TigerDev-Studio",
+    "url": "https://github.com/TigerDev-Studio"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/TigerDev-Studio/Folder-Structure-Generator.git"
+  },
+  "homepage": "https://github.com/TigerDev-Studio/Folder-Structure-Generator",
+  "bugs": {
+    "url": "https://github.com/TigerDev-Studio/Folder-Structure-Generator/issues"
+  },
+  "engines": {
+    "vscode": "^1.85.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "readme",
+    "folder",
+    "structure",
+    "tree",
+    "documentation"
+  ],
+  "main": "./extension.js",
+  "activationEvents": [
+    "onCommand:folderStructureGenerator.updateReadmeStructure",
+    "onCommand:folderStructureGenerator.copyFolderStructure"
+  ],
+  "contributes": {
+    "commands": [
+      {
+        "command": "folderStructureGenerator.updateReadmeStructure",
+        "title": "Folder Structure Generator: Update README Structure"
+      },
+      {
+        "command": "folderStructureGenerator.copyFolderStructure",
+        "title": "Folder Structure Generator: Copy Folder Structure"
+      }
+    ],
+    "configuration": {
+      "title": "Folder Structure Generator",
+      "properties": {
+        "folderStructureGenerator.sectionTitle": {
+          "type": "string",
+          "default": "Project Structure",
+          "description": "Heading used when inserting the generated tree into README.md."
+        },
+        "folderStructureGenerator.maxDepth": {
+          "type": "number",
+          "default": 3,
+          "minimum": 1,
+          "description": "Maximum folder depth included in the generated structure."
+        },
+        "folderStructureGenerator.includeFiles": {
+          "type": "boolean",
+          "default": true,
+          "description": "Include files in the generated structure. Disable to show folders only."
+        },
+        "folderStructureGenerator.exclude": {
+          "type": "array",
+          "default": [
+            ".git",
+            "node_modules",
+            ".DS_Store",
+            ".vscode-test",
+            "dist",
+            "out"
+          ],
+          "items": {
+            "type": "string"
+          },
+          "description": "Files or folders excluded from the generated structure."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "package": "vsce package"
+  },
+  "devDependencies": {
+    "@vscode/vsce": "^3.6.1"
+  }
+}
